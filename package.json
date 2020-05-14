@@ -1,5 +1,8 @@
 {
-  "name": "@davdlamyc/calculator",
+  "name": "@davidlamyc/calculator",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
