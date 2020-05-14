@@ -1,0 +1,28 @@
+  
+# This is a basic workflow to help you get started with Actions
+
+name: Publish to github packages
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@davidlamyc'
+    - run: npm install
+    - run: npm run test
+    - run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
